@@ -1,0 +1,13 @@
+
+ <%= simple_form_for(@pet) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name, label: 'Name of Pet' %>
+      <%= f.input :description, label: 'Description' %>
+      <%= f.input :category %>
+      <%= f.input :location, label: "Where's your pet?" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+ <% end %>

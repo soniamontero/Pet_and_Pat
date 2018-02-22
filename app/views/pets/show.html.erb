@@ -1,2 +1,9 @@
-<h1>Pets#show</h1>
-<p>Find me in app/views/pets/show.html.erb</p>
+<h1> <%= @pet.name %></h1>
+
+  <p>
+    <%= @pet.description %>
+    <%= @pet.category %>
+    <%= link_to 'Destroy', pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?'} %>
+  </p>
+
+<%= link_to 'Back', root_path %>
