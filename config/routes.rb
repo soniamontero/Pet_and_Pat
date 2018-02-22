@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
+
+  get 'bookings/new'
+
+  get 'bookings/edit'
+
+  get 'bookings/show'
+
+  get 'pets/new'
+
+  get 'pets/edit'
+
+  get 'pets/show'
+
   devise_for :users
   root to: 'pages#home'
 
