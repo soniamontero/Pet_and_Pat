@@ -1,17 +1,26 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<h1>Welcome to your Dashboard</h1>
  <%= Booking.all%>
 
 <div>
   Div of Profile
   <%= current_user.name %>
   <%= current_user.description %>
-
 </div>
 
-<div>
-
-</div>
+<!-- <div>
+<%# @bookings.each do |booking| %>
+  <%#= link_to booking_path(booking) do %>
+  <div class="col-xs-6 col-sm-4 col-md-3">
+    <div class="card">
+       <p><%= booking.pet_id %></p>
+       <p><%= booking.user_id %></p>
+       <p><%= booking.start_date %></p>
+       <p><%= booking.end_date %></p>
+        </div>
+      </div>
+    <%# end %>
+<%# end %>
+</div> -->
 
 <div>
   Div of listing all your pets
@@ -21,3 +30,4 @@
   <% end %>
 </ul>
 </div>
+
