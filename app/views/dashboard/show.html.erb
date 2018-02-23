@@ -1,27 +1,38 @@
-<h1>Welcome to your Dashboard</h1>
 
-<div>
-  <h2>Hi, <%= current_user.name %>! Welcome to your dashboard!</h2>
-</div>
+<div class="container">
+  <div>
+    <h1>Hi, <%= current_user.name %>!</h1>
+    <p>Welcome to your dashboard</p>
+  </div>
 
-<div>
-  <h2>All the beloved furry babies you have on our network:</h2>
-  <ul>
-  <% current_user.pets.each do |pet| %>
-  <li>
-    <p><%= pet.name %>, <%= pet.description %></p>
-    </li>
-  <% end %>
-</ul>
-</div>
 
-<div>
-  <h2>Div of all my bookings</h2>
-  <ul>
-    <% all_bookings = Booking.where(user_id: current_user.id)%>
-    <%= all_bookings.each do |booking| %>
-    <li><%= booking.pet_id %>, <%= booking.start_date %></li>
-  <% end %>
-  </ul>
+
+ <div>
+    <h2>Your bookings</h2>
+    <ul>
+      <% all_bookings = Booking.where(user_id: current_user.id)%>
+      <% all_bookings.each do |booking| %>
+      <div class="card">
+        <li>
+          <p>You have booked:</p>
+          <h4><%= Pet.find(booking.pet_id).name %></h4>
+          <p>on: <%= booking.start_date.to_date %></p>
+          <button><%= link_to 'Edit', edit_pet_booking_path(booking) %></button>
+        </li>
+      </div>
+    <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h2>All your beloved furry babies</h2>
+    <% current_user.pets.each do |pet| %>
+      <h4><%= pet.name %></h4>
+      <img src="http://www.thedailyrecords.com/wp-content/uploads/2017/01/Beagle-Top-Most-Famous-Beautiful-Dogs-Breeds-2018.jpg" style=" width: 150px">
+      <p><%= pet.description %></p>
+      <button><%= link_to 'Edit', pet_path(pet), class: "btn" %></button>
+    <% end %>
+  </div>
+
 
 </div>
