@@ -1,0 +1,55 @@
+.banner {
+  background-color: gray;
+  color: white;
+  text-align: center;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  height: 300px;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  padding-top: 70px;
+}
+.banner h1 {
+  font-size: 50px;
+  font-family: 'Quattrocento', serif;
+  font-weight: lighter;
+  text-shadow: 1px 0px 10px rgba(255, 214, 188, 1);
+}
+
+.banner h2 {
+  font-size: 30px;
+  font-family: 'Quattrocento', serif !important;
+  font-weight: lighter;
+  text-shadow: 1px 0px 10px rgba(255, 214, 188, 1);
+}
+
+.banner p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+.btn {
+
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ff895e;
+  font-size: 12px;
+  background: #ffffff;
+  padding: 4px 28px 4px 28px;
+  border: solid #ff895e 1px;
+  text-decoration: none;
+  margin: 0px 0px 0px 50px;
+}
+
+.btn:hover {
+  background: #fff6f2;
+  color: #ff895e;
+}
+
