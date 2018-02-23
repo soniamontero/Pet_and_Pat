@@ -10,21 +10,12 @@
 
 <h2>Reviews</h2>
 
+
 <% @pet.bookings.each do |booking| %>
+  <% booking.reviews.each do |review| %>
+    <p><%= review.content %></p>
+    <p><%= review.rating %></p>
+  <% end %>
+<% end %>
 
-      <tr><p>
-        <td><%= booking.review.content%></td>
-        <td><%= booking.rating%></td>
-        <% end %>
-      </p></tr>
-
-  <%= link_to 'Back', root_path, class: 'btn back-btn' %>
-
-
- t.text "content"
-    t.integer "rating"
-    t.bigint "booking_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
-  end
+  <%= link_to 'Back', root_path %>
