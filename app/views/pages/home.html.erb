@@ -1,13 +1,5 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<p><%= Booking.all %>
 
+<h1>Pet and Pat</h1>
 
-<form action="/" method="get">
-  <input type="text" name="search">
-  <input type="submit">
-</form>
-
-
-<%= @parameters_from_url %>
-<%= @searched_query %>
+<h3><%= link_to 'List of Pets', pets_path %></h3>
+<h3><%= link_to 'Add a new pet', new_pet_path %></h3>
