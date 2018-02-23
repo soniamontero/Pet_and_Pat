@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'dashboard/show'
+
   devise_for :users
   root to: 'pages#home'
 
+  get '/strawberries/:rahel', to: 'pages#home'
 
     resources :pets do
       resources :bookings, only: [:edit, :update, :new, :create]
