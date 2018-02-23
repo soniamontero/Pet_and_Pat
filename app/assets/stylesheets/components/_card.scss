@@ -1,0 +1,59 @@
+.card {
+  height: 500px;
+  width: 200px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 20px;
+    &:hover {
+    filter: brightness(110%);
+  }
+
+}
+
+.title {
+  color: #FFD447;
+  padding: 25px;
+  margin: 11px;
+  text-align: center;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 10px 0px 0px #F2F2ED;
+  font-family: 'Oswald', sans-serif;
+  font-size: 100px;
+  font-weight: lighter;
+  font-color: white;
+}
+
+.card-description {
+  color: white;
+  font-family: 'Quattrocento', serif;
+  text-align: center;
+  font-size: 35px;
+  bottom: 10px;
+  left: 10px;
+  font-weight: lighter;
+  a:link {
+    text-decoration: none;
+    color: white
+
+  }
+  a:visited {
+    color: white;
+  }
+}
+
+
+.text-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+}
+
+.column-centered {
+  margin: auto;
+}
+
