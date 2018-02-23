@@ -1,3 +1,13 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <p><%= Booking.all %>
+
+
+<form action="/" method="get">
+  <input type="text" name="search">
+  <input type="submit">
+</form>
+
+
+<%= @parameters_from_url %>
+<%= @searched_query %>

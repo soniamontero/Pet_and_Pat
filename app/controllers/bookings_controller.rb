@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def new
     @booking = Booking.new
@@ -9,28 +9,40 @@ class BookingsController < ApplicationController
   end
 
   def create
-    booking = Booking.new(start_date: start_date, end_date: end_date)
+    booking = Booking.new(booking_params)
+    booking.pet = Pet.find(params[:pet_id])
+    booking.user = current_user
     booking.save
-    redirect_to root_path
-  end
-
-  def edit
+    redirect_to dashboard_path(current_user)
   end
 
   def show
   end
 
-  def start_date
-   year = params[:booking]["start_date(1i)"].to_i
-   month = params[:booking]["start_date(2i)"].to_i
-   day = params[:booking]["start_date(3i)"].to_i
-    start = Date.new(year, month, day)
+  def destroy
+    @booking.destroy
+    redirect_to dashboard_path(current_user)
   end
 
-  def end_date
-    year = params[:booking]["end_date(1i)"].to_i
-    month = params[:booking]["end_date(2i)"].to_i
-    day = params[:booking]["end_date(3i)"].to_i
-    end_d = Date.new(year, month, day)
+  def edit
+    @booking
+    @pet = Pet.find(params[:pet_id])
+
   end
+
+  def update
+    @booking = @booking.update(booking_params)
+    redirect_to dashboard_path(current_user)
+  end
+
+  private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date)
+  end
+
 end
