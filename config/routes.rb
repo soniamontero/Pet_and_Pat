@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'dashboard/show'
 
   devise_for :users
-  root to: 'pages#home'
+  root to: 'pets#index'
 
   get '/strawberries/:rahel', to: 'pages#home'
 
