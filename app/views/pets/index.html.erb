@@ -1,14 +1,11 @@
 <body>
   <div class="flexbox">
-    <h1 class="title">Search Results...</h1>
 
     <div class="container">
+
       <div class="row">
+      <h1 class="title">Search Results...</h1>
         <% @pets.each do |pet| %>
-    <h1 class="title">Search Results...</h1>
-  <div class="container">
-    <div class="row">
-      <% @pets.each do |pet| %>
         <%= link_to pet_path(pet) do %>
         <div class="col-xs-6 col-sm-4 col-md-3">
           <div class="card" style="background: url('https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2018%2F01%2Fgettyimages-459583554.jpg&w=1600&q=70'), height: 300, width: 400, crop: :fill %>');">
@@ -16,7 +13,6 @@
               <div class="text-bottom">
                 <p class="column-centered">
                   <p><%= pet.name %></p>
-                  <p><%= pet.description %></p>
                   <p><%= pet.category %></p>
                   <p><%= pet.location %></p>
                 </p>
@@ -29,8 +25,9 @@
       </div>
     </div>
 
-  <div id="map"></div>
-</div>
+    <div id="map"></div>
+
+  </div>
 </body>
 
 <!-- Gmaps js: building the map -->
