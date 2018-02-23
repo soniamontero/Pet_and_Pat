@@ -6,6 +6,8 @@
     <p><%= link_to 'Destroy', pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?'} %></p>
     <%= link_to 'Book this pet', new_pet_booking_path(@pet) %>
 
+<h2>Reviews</h2>
+
 <% @pet.bookings.each do |booking| %>
   <% booking.reviews.each do |review| %>
     <p><%= review.content %></p>
