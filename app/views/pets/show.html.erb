@@ -19,12 +19,3 @@
       </p></tr>
 
   <%= link_to 'Back', root_path, class: 'btn back-btn' %>
-
-
- t.text "content"
-    t.integer "rating"
-    t.bigint "booking_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
-  end
