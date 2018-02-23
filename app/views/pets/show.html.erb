@@ -4,6 +4,7 @@
     <%= @pet.description %>
     <%= @pet.category %>
     <%= link_to 'Destroy', pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?'} %>
+    <%= link_to 'Book this pet', new_pet_booking_path(@pet) %>
   </p>
 
 <%= link_to 'Back', root_path %>
