@@ -1,7 +1,7 @@
 <body>
   <div class="flexbox">
 
-<!--         <h1 class="title">Search Results...</h1> -->
+    <!--         <h1 class="title">Search Results...</h1> -->
     <div class="container">
       <div class="row">
         <% @pets.each do |pet| %>
@@ -25,13 +25,14 @@
       </div>
     </div>
 
-      <div id="map">
-      </div>
-      </div>
+    <div id="map" data-markers="<%= @markers.to_json %>">
+    </div>
+  </div>
 
-      <!-- Gmaps js: building the map -->
-      <script>
-        function initMap() {
+<%= content_for(:after_js) do %>
+  <!-- Gmaps js: building the map -->
+  <script>
+    function initMap() {
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 52.5206, lng: 13.4098},
@@ -45,9 +46,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Gmaps JavaScript -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&callback=initMap">
-  </script>
+<% end  %>
 </body>
 </html>
 
