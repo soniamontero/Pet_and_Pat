@@ -2,7 +2,14 @@ class PetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @pets = Pet.all
+    @pets = Pet.where.not(latitude: nil, longitude: nil)
+
+    @markers = @pets.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude
+      }
+    end
   end
 
   def new
@@ -39,6 +46,8 @@ class PetsController < ApplicationController
     else
     end
   end
+
+
 
   private
 
