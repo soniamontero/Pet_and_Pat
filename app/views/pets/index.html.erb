@@ -7,7 +7,7 @@
         <% @pets.each do |pet| %>
         <%= link_to pet_path(pet) do %>
         <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="blog-card spring-fever">
+          <div class="blog-card" style="background: url('<%= cl_image_path pet.photo, height: 300, width: 400, crop: :fill %>');">
             <div class="title-content">
               <h3><%= pet.name %></h3>
               <div class="intro"><%= pet.category %></div>
@@ -20,8 +20,8 @@
             <div class="color-overlay"></div>
           </div><!-- /.blog-card -->
         </div>
-          <% end %>
-          <% end %>
+        <% end %>
+        <% end %>
       </div>
     </div>
 

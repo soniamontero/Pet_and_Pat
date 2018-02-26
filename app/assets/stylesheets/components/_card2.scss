@@ -23,9 +23,6 @@ $yellow:      #D0BB57;
 
 
   &.spring-fever{
-    background: url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>');
-    background-size: cover !important;
-
   }
 
   .color-overlay{
