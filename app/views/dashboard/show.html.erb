@@ -8,7 +8,7 @@
 
 
   <div>
-    <h2>Your bookings</h2>
+    <h2>Pets you've bookings</h2>
     <ul>
       <% all_bookings = Booking.where(user_id: current_user.id)%>
       <% all_bookings.each do |booking| %>
@@ -27,16 +27,32 @@
   </div>
 
   <div>
+    <h2>Your Pets bookings</h2>
+    <ul>
+      <% Booking.all.each do |booking| %>
+      <% if current_user.my_pets.include?(booking.pet_id) %>
+      <div class="card">
+        <li>
+          <p><%= Pet.find(booking.pet_id).name %></p>
+          <p>on: <%= booking.start_date.to_date %></p>
+        </li>
+      </div>
+      <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <div>
     <h2>All your beloved furry babies</h2>
+    <div class="card"
     <% current_user.pets.each do |pet| %>
     <h4><%= pet.name %></h4>
-
     <img src="http://www.thedailyrecords.com/wp-content/uploads/2017/01/Beagle-Top-Most-Famous-Beautiful-Dogs-Breeds-2018.jpg" style=" width: 150px">
     <p><%= pet.description %></p>
-
     <button><%= link_to 'Edit', pet_path(pet), class: "btn" %></button>
     <% end %>
   </div>
-
+</div>
 
 </div>
