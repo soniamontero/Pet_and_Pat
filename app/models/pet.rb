@@ -3,6 +3,9 @@ class Pet < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
   mount_uploader :photo, PhotoUploader
 
   validates :name, presence: true, uniqueness: true
