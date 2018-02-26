@@ -2,37 +2,34 @@
   <div class="flexbox">
 
     <div class="container">
-
-      <div class="row">
+    <div class="row">
       <h1 class="title">Search Results...</h1>
-        <% @pets.each do |pet| %>
-        <%= link_to pet_path(pet) do %>
-        <div class="col-xs-6 col-sm-4 col-md-3">
-          <div class="card" style="background: url('https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2018%2F01%2Fgettyimages-459583554.jpg&w=1600&q=70'), height: 300, width: 400, crop: :fill %>');">
-            <div class="card-description">
-              <div class="text-bottom">
-                <p class="column-centered">
-                  <p><%= pet.name %></p>
-                  <p><%= pet.category %></p>
-                  <p><%= pet.location %></p>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <% @pets.each do |pet| %>
+      <%= link_to pet_path(pet) do %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+        <div class="blog-card spring-fever">
+          <div class="title-content">
+            <h3><%= pet.name %></h3>
+            <hr />
+            <div class="intro"><%= pet.category %></div>
+          </div><!-- /.title-content -->
+          <div class="card-info">
+            <%= pet.location %>
+          </div><!-- /.card-info -->
+          <!-- overlays -->
+          <div class="gradient-overlay"></div>
+          <div class="color-overlay"></div>
+        </div><!-- /.blog-card -->
         <% end %>
         <% end %>
       </div>
+
     </div>
+      <div id="map"></div>
 
-    <div id="map"></div>
-
-  </div>
-</body>
-
-<!-- Gmaps js: building the map -->
-<script>
-  function initMap() {
+  <!-- Gmaps js: building the map -->
+  <script>
+    function initMap() {
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 52.5206, lng: 13.4098},
@@ -47,7 +44,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Gmaps JavaScript -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&callback=initMap">
   </script>
 </body>
 </html>
