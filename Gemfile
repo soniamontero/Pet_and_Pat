@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
 
+gem "figaro"
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -20,6 +21,8 @@ gem 'faker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'geocoder'
+gem 'pg_search'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
