@@ -4,7 +4,7 @@ class PetsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = "name ILIKE :query OR category ILIKE :query"
-      @pets = Pet.where(sql_query, query: "%#{params[:query]}%")
+      @pets = Pet.where(sql_query, query: "%#{params[:query]}%").where.not(latitude: nil, longitude: nil)
     else
       @pets = Pet.where.not(latitude: nil, longitude: nil)
     end
