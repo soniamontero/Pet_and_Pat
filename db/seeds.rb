@@ -28,6 +28,7 @@ User.destroy_all
     category: Faker::StarWars.specie,
     location: Faker::Address.city,
     user_id: user.id,
+    )
 end
 
 Pet.update_all(photo:"http://www.thedailyrecords.com/wp-content/uploads/2017/01/Beagle-Top-Most-Famous-Beautiful-Dogs-Breeds-2018.jpg")
