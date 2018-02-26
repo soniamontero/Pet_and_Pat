@@ -2,21 +2,14 @@
 @import url(https://fonts.googeapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
 
 // variables
-$card-width: 100px;
-$card-height: 100px;
-$h-color:     #9CC9E3;
+
+$card-width: 220px;
+$card-height: 200px;
 $yellow:      #D0BB57;
-$txt-color:   #DCE3E7;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.container {
+  margin: 0px;
 }
-
-// body{
-//   background: #323c41;
-// }
 
 .blog-card{
   width: $card-width;
@@ -26,17 +19,18 @@ $txt-color:   #DCE3E7;
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
   text-align: center;
+  margin: 13px;
+
 
   &.spring-fever{
     background: url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>');
     background-size: cover !important;
-    background-position: center;
 
   }
 
   .color-overlay{
     /* Rectangle 11: */
-    background: rgba(84,104,110,0.4);
+    background: rgba(84,104,110,0);
     width: $card-width;
     height: $card-height;
     position: absolute;
@@ -63,10 +57,10 @@ $txt-color:   #DCE3E7;
 
     .card-info{
       opacity: 1;
-      bottom: 60px;
+      bottom: 20px;
     }
     .color-overlay{
-      background: rgba(84,104,110,0.8);
+      background: rgba(0, 0, 0, 0.5);
     }
   }
 }
@@ -84,9 +78,10 @@ h3{
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 2px;
-  color: $h-color;
+  color: white;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 0;
+  text-shadow:5px 5px 5px #000000;
 }
 hr{
   width: 50px;
@@ -94,11 +89,13 @@ hr{
   margin: 20px auto;
   border: 0;
   background: $yellow;
+  text-shadow: -2px 1px 12px #454545;
+;
 }
 .intro{
   width: 170px;
   margin: 0 auto;
-  color: $txt-color;
+  color: #DCE3E7;
   font-family: 'Droid Serif', serif;
   font-size: 13px;
   font-style: italic;
@@ -107,11 +104,11 @@ hr{
 .card-info{
   width: 100%;
   position: absolute;
-  bottom: 100px;
+  bottom: 80px;
   left: 0;
   margin: 0 auto;
   padding: 0 50px;
-  color: $txt-color;
+  color: #DCE3E7;
   font-family: 'Droid Serif', serif;
   font-style: 16px;
   line-height: 24px;

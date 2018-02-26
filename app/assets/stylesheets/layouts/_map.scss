@@ -1,6 +1,6 @@
 #map {
   flex: 0 0 450px;
-  height: 700px;
+  height: 100vh;
   position: sticky !important;
-  justify-content: flex-end;
+  top: 0 !important;
 }
