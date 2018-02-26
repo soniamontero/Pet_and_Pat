@@ -7,12 +7,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true, uniqueness: true
-
-   def my_pets
-    pets = []
-    self.pets.each do |pet|
-      pets << pet.id
-    end
-    pets
-  end
 end
