@@ -13,7 +13,7 @@ Booking.destroy_all
 Pet.destroy_all
 User.destroy_all
 
-100.times do
+10.times do
   puts "creating a user..."
   user = User.new(
     name: Faker::Name.first_name,
