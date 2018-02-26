@@ -2,6 +2,7 @@
 @import url(https://fonts.googeapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
 
 // variables
+
 $card-width: 220px;
 $card-height: 200px;
 $yellow:      #D0BB57;
@@ -22,7 +23,7 @@ $yellow:      #D0BB57;
 
 
   &.spring-fever{
-    background: url(https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2018%2F01%2Fgettyimages-459583554.jpg&w=1600&q=70) no-repeat;
+    background: url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>');
     background-size: cover !important;
 
   }
