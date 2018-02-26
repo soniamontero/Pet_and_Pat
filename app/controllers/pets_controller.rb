@@ -2,7 +2,11 @@ class PetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @pets = Pet.where.not(latitude: nil, longitude: nil)
+    if params[:query].present?
+      @pets = Pet.where("category ILIKE ?", "%#{params[:query]}%")
+    else
+      @pets = Pet.where.not(latitude: nil, longitude: nil)
+    end
 
     @markers = @pets.map do |pet|
       {
