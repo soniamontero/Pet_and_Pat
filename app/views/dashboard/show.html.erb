@@ -18,7 +18,7 @@
           <h4><%= Pet.find(booking.pet_id).name %></h4>
           <p>on: <%= booking.start_date.to_date %></p>
           <button><%= link_to 'Edit', edit_pet_booking_path(booking) %></button>
-          <button><%= link_to 'Approve', approved_booking_path(booking), method: :patch %></button>
+
           <p> <%= booking.status %> </p>
         </li>
       </div>
@@ -30,8 +30,10 @@
     <h2>All your beloved furry babies</h2>
     <% current_user.pets.each do |pet| %>
     <h4><%= pet.name %></h4>
+
     <img src="http://www.thedailyrecords.com/wp-content/uploads/2017/01/Beagle-Top-Most-Famous-Beautiful-Dogs-Breeds-2018.jpg" style=" width: 150px">
     <p><%= pet.description %></p>
+
     <button><%= link_to 'Edit', pet_path(pet), class: "btn" %></button>
     <% end %>
   </div>
