@@ -12,7 +12,9 @@ class PetsController < ApplicationController
     @markers = @pets.map do |pet|
       {
         lat: pet.latitude,
-        lng: pet.longitude
+        lng: pet.longitude,
+        infoWindow: { content: render_to_string(partial: "/pets/map_box", locals: { pet: pet }) }
+
       }
     end
   end
