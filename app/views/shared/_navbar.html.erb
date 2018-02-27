@@ -10,8 +10,12 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "PET LIST", pets_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "PETS", pets_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "ADD NEW PET", new_pet_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <% if user_signed_in? %>
+      <%= link_to "Welcome #{current_user.name}!", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link username" %>
+      <% end %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
