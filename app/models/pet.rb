@@ -12,4 +12,10 @@ class Pet < ApplicationRecord
   validates :description, presence: true
   validates :location, presence: true
 
-end
+  include PgSearch
+  pg_search_scope :search_full_text, :against => {
+    :category => 'A',
+    :name => 'B',
+    :description => 'C'
+  }
+  end

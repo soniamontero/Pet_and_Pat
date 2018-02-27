@@ -1,0 +1,40 @@
+// .form {
+//   padding: 10px 10px 10px 10px;
+//   background-color: white;
+// }
+
+.form-inputs {
+  position: relative;
+  padding: 10px 150px 10px 240px;
+
+}
+.form-control {
+  font-size: 12px;
+}
+
+.control-label {
+  font-size: 14px;
+  font-weight: lighter;
+  color: gray;
+
+  #pet_location {
+    font-size: 12px;
+    border: 1px solid #f3f3f3;
+  }
+}
+
+.newpet {
+  background-color: white;
+  margin-top: -25px;
+
+  h1 {
+  position: relative;
+  font-size: 28px;
+  font-weight: bolder;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  padding-top: 25px;
+  color: #909090;
+  }
+}
