@@ -1,0 +1,56 @@
+<div class="navbar-wagon2">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand2" do %>
+    <%= image_tag "petpatlogo.png", height: 50 %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right2">
+
+    <% if user_signed_in? %>
+
+      <!-- Links when logged in -->
+      <%= link_to "PETS", pets_path, class: "navbar-wagon-item2 navbar-wagon-link2" %>
+      <%= link_to "ADD NEW PET", new_pet_path, class: "navbar-wagon-item2 navbar-wagon-link2" %>
+
+      <% if user_signed_in? %>
+      <%= link_to "Welcome #{current_user.name}!", dashboard_path(current_user), class: "navbar-wagon-item2 navbar-wagon-link2 username2" %>
+      <% end %>
+
+      <!-- Avatar with dropdown menu -->
+      <div class="navbar-wagon-item2">
+        <div class="dropdown">
+          <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI_PvGkKGbQ77U1PXgaoCmmzHmLg2ZuzI6isVIY8oG8UOTgjvQ", class: "avatar2 dropdown-toggle2", id: "navbar-wagon-menu2", "data-toggle2" => "dropdown2" %>
+          <ul class="dropdown-menu2 dropdown-menu-right2 navbar-wagon-dropdown-menu2">
+            <li>
+              <%= link_to dashboard_path(current_user) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item2 navbar-wagon-link2" %>
+    <% end %>
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item2 hidden-md hidden-lg">
+    <div class="dropdown2">
+      <i class="fa fa-bars dropdown-toggle2" data-toggle="dropdown2"></i>
+      <ul class="dropdown-menu2 dropdown-menu-right2 navbar-wagon-dropdown-menu2">
+        <li><a href="#">Some mobile link</a></li>
+        <li><a href="#">Other one</a></li>
+        <li><a href="#">Other one</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
