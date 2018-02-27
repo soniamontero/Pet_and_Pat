@@ -1,95 +1,102 @@
 
-<div class="container">
-
-    <div class="container">
-      <h2>Pets you have booked <%= current_user.name %></h2>
+<div class="row one">
+   <!-- /.user-profile -->
+  <div class="col-xs-12 col-sm-4">
+    <div class="user-profile ">
+      <%= image_tag "user.png", class: "profile-img" %>
+      <h2><%= current_user.name %></h2>
+    </div>
+  </div>
+  <!-- /.bookings -->
+  <div class="col-xs-12 col-sm-8 ">
+     <!-- /.your-bookings -->
+    <div class="your-bookings">
+      <h2>Your bookings</h2>
       <div class="row">
         <% all_bookings = Booking.where(user_id: current_user.id)%>
         <% all_bookings.each do |booking| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="blog-card booking-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
-            <div class="title-content">
-              <h3><%= Pet.find(booking.pet_id).name %></h3>
-              <div class="intro"><%= booking.status %></div>
-            </div><!-- /.title-content -->
-            <div class="card-info">
-              <%= booking.start_date.to_date %>
-
-            </div><!-- /.card-info -->
-            <!-- overlays -->
-            <div class="gradient-overlay"></div>
-            <div class="color-overlay"></div>
-          </div><!-- /.blog-card -->
-        </div>
-        <% end %>
+          <%= link_to pet_path(booking.pet) do %>
+            <div class="col-xs-12 col-sm-6 col-md-4 ">
+              <div class="blog-card booking-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
+                <div class="title-content">
+                  <h3><%= Pet.find(booking.pet_id).name %></h3>
+                  <div class="intro"><%= booking.status %></div>
+                </div><!-- /.title-content -->
+                <div class="card-info">
+                  <%= booking.start_date.to_formatted_s(:short) %>
+                </div><!-- /.card-info -->
+                <!-- overlays -->
+                <div class="gradient-overlay"></div>
+                <div class="color-overlay"></div>
+              </div><!-- /.blog-card -->
+            </div>
+          <% end %>
+          <% end %>
       </div>
     </div>
-
-     <div class="container">
+    <!-- /.pet-booking-->
+    <div class="pets-booking">
       <h2>Your Pets bookings</h2>
-      <div class="row">
-        <% @mypets.each do |pet|%>
-        <% pet.bookings.each do |booking|  %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="blog-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
-            <div class="title-content">
-              <h3><%= Pet.find(booking.pet_id).name %></h3>
-              <% if booking.status != "approved" %>
-                <%= link_to 'Approve Booking', approved_booking_path(booking), class: "btn", method: :patch %>
-                <% end %>
-              <div class="intro">
-                <%= booking.status %>
-              </div>
-            </div><!-- /.title-content -->
-            <div class="card-info">
-              <%= booking.start_date.to_date %>
-            </div><!-- /.card-info -->
-            <!-- overlays -->
-            <div class="gradient-overlay"></div>
-            <div class="color-overlay"></div>
-          </div><!-- /.blog-card -->
-        </div>
-        <% end %>
-        <% end %>
-      </div>
+      <% @mypets.each do |pet|%>
+      <% pet.bookings.each do |booking|  %>
+      <%= link_to pet_path(booking.pet) do %>
+        <div class="blog-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
+          <div class="title-content">
+            <h3><%= Pet.find(booking.pet_id).name %></h3>
+            <% if booking.status != "approved" %>
+              <%= link_to 'Approve Booking', approved_booking_path(booking), class: "btn", method: :patch %>
+              <% end %>
+            <div class="intro">
+              <%= booking.status %>
+            </div>
+          </div><!-- /.title-content -->
+          <div class="card-info">
+            <%= booking.start_date.to_formatted_s(:short)   %>
+          </div><!-- /.card-info -->
+          <!-- overlays -->
+          <div class="gradient-overlay"></div>
+          <div class="color-overlay"></div>
+          <% end %>
+           <% end %>
+        </div><!-- /.blog-card -->
+      <% end %>
     </div>
-
-    <div class="container">
-      <h2>All your beloved furry babies</h2>
-      <div class="row">
-        <% current_user.pets.each do |pet| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="blog-card" style="background: url('<%= cl_image_path pet.photo, height: 300, width: 400, crop: :fill %>');">
-            <div class="title-content">
-              <h3><%= pet.name %></h3>
-              <div class="intro">
-                <%= pet.description %>
-
-              </div>
-            </div><!-- /.title-content -->
-            <div class="card-info">
-             <%= link_to 'Edit', pet_path(pet), class: "btn" %>
-            </div><!-- /.card-info -->
-            <!-- overlays -->
-            <div class="gradient-overlay"></div>
-            <div class="color-overlay"></div>
-          </div><!-- /.blog-card -->
-        </div>
-        <% end %>
-      </div>
-    </div>
-
-
-
-  <!-- <div>
-    <h2>All your beloved furry babies</h2>
-    <% current_user.pets.each do |pet| %>
-      <div class="blog-card" style="background: url('<%= cl_image_path pet.photo, height: 300, width: 400, crop: :fill %>');">
-        <h4><%= pet.name %></h4>
-        <p><%= pet.description %></p>
-        <%= link_to 'Edit', pet_path(pet), class: "btn" %>
+  </div>
+</div>
+<div class="row my-pets">
+  <h2>All your beloved furry babies</h2>
+  <% current_user.pets.each do |pet| %>
+    <%= link_to pet_path(pet) do %>
+      <div class="col-xs-12 col-sm-3 ">
+        <div class="blog-card" style="background: url('<%= cl_image_path pet.photo, height: 300, width: 400, crop: :fill %>');">
+          <div class="title-content">
+            <h3><%= pet.name %></h3>
+            <div class="intro">
+              <%= pet.description %>
+            </div>
+          </div><!-- /.title-content -->
+          <div class="card-info">
+           <%= link_to 'Edit', pet_path(pet), class: "btn" %>
+          </div><!-- /.card-info -->
+          <!-- overlays -->
+          <div class="gradient-overlay"></div>
+          <div class="color-overlay"></div>
+        </div><!-- /.blog-card -->
       </div>
     <% end %>
-  </div> -->
+  <% end %>
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
