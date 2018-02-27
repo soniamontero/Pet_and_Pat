@@ -8,6 +8,10 @@ class Booking < ApplicationRecord
   validates :end_date, presence: true
   validates :status, presence: true, inclusion: { in: %w(pending approved declined)}
 
+  def reviewed?
+    self.reviews.any?
+  end
+
 end
 
 

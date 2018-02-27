@@ -1,4 +1,3 @@
-
 <div class="row one">
    <!-- /.user-profile -->
   <div class="col-xs-12 col-sm-4">
@@ -13,8 +12,7 @@
     <div class="your-bookings">
       <h2>Your bookings</h2>
       <div class="row">
-        <% all_bookings = Booking.where(user_id: current_user.id)%>
-        <% all_bookings.each do |booking| %>
+        <% @upcoming_bookings.each do |booking| %>
           <%= link_to pet_path(booking.pet) do %>
             <div class="col-xs-12 col-sm-6 col-md-4 ">
               <div class="blog-card booking-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
@@ -34,6 +32,34 @@
           <% end %>
       </div>
     </div>
+
+    <!-- /.your needed reviews -->
+    <% unless @bookings_needing_review.empty? %>
+    <div>
+      <h2>Bookings that need your review:</h2>
+      <div class="row">
+        <% @bookings_needing_review.each do |booking| %>
+          <%= link_to new_booking_review_path(booking) do %>
+            <div class="col-xs-12 col-sm-6 col-md-4 ">
+              <div class="blog-card booking-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
+                <div class="title-content">
+                  <h3><%= Pet.find(booking.pet_id).name %></h3>
+                  <div class="intro"><%= booking.status %></div>
+                </div><!-- /.title-content -->
+                <div class="card-info">
+                  <%= booking.start_date.to_formatted_s(:short) %>
+                </div><!-- /.card-info -->
+                <!-- overlays -->
+                <div class="gradient-overlay"></div>
+                <div class="color-overlay"></div>
+              </div><!-- /.blog-card -->
+            </div>
+          <% end %>
+          <% end %>
+      </div>
+    </div>
+    <% end %>
+
     <!-- /.pet-booking-->
     <div class="pets-booking">
       <h2>Your Pets bookings</h2>
@@ -61,6 +87,7 @@
         </div><!-- /.blog-card -->
       <% end %>
     </div>
+
   </div>
 </div>
 <div class="row my-pets">
@@ -85,18 +112,3 @@
       </div>
     <% end %>
   <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
