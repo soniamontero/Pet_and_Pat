@@ -34,7 +34,7 @@
     </div>
 
     <!-- /.your needed reviews -->
-    <% if !@bookings_needing_review.empty? %>
+    <% unless @bookings_needing_review.empty? %>
     <div>
       <h2>Bookings that need your review:</h2>
       <div class="row">

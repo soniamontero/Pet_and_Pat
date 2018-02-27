@@ -6,14 +6,12 @@ class DashboardController < ApplicationController
   end
 
   def get_bookings_needing_review
-    all_bookings = Booking.where(user_id: current_user.id)
-    bookings_needing_review = []
-    past_bookings = all_bookings.where("end_date > ?",  Date.today)
+    past_bookings = current_user.bookings.where("end_date < ?", Date.today)
     reviews = Review.all
-    past_bookings.each do |booking|
-       bookings_needing_review << booking if !booking.reviews.nil?
+    bookings_needing_review = past_bookings.map do |booking|
+        booking unless booking.reviewed?
     end
-    return bookings_needing_review
+    bookings_needing_review.compact
   end
 end
 
