@@ -2,47 +2,52 @@
   <div class="flexbox">
 
     <div class="container">
-      <div class="search-bar">
-      <%= form_tag pets_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-        placeholder: "Find a pet"
-        %>
-        <% end %>
-      </div>
-
-        <!-- the list / map of pets -->
-        <div class="row">
-          <% @pets.each do |pet| %>
-          <%= link_to pet_path(pet) do %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="blog-card" style="background: url('<%= cl_image_path pet.photo, height: 300, width: 400, crop: :fill %>');">
-              <div class="title-content">
-                <h3><%= pet.name %></h3>
-                <div class="intro"><%= pet.category %></div>
-              </div><!-- /.title-content -->
-              <div class="card-info">
-                <%= pet.location %>
-              </div><!-- /.card-info -->
-              <!-- overlays -->
-              <div class="gradient-overlay"></div>
-              <div class="color-overlay"></div>
-            </div><!-- /.blog-card -->
+      <div class="banner" style="background-color:white;">
+        <div class="search-bar">
+          <%= form_tag pets_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+            placeholder: "Find a pet by catagory"
+            %>
+            <% end %>
           </div>
-          <% end %>
+          <% if params[:query].present? %>
+          <%= link_to 'reset search', root_path %>
           <% end %>
         </div>
-      </div>
 
-      <div id="map" data-markers="<%= @markers.to_json %>">
+      <!-- the list / map of pets -->
+      <div class="row">
+        <% @pets.each do |pet| %>
+        <%= link_to pet_path(pet) do %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="blog-card" style="background: url('<%= cl_image_path pet.photo, height: 300, width: 400, crop: :fill %>');">
+            <div class="title-content">
+              <h3><%= pet.name %></h3>
+              <div class="intro"><%= pet.category %></div>
+            </div><!-- /.title-content -->
+            <div class="card-info">
+              <%= pet.location %>
+            </div><!-- /.card-info -->
+            <!-- overlays -->
+            <div class="gradient-overlay"></div>
+            <div class="color-overlay"></div>
+          </div><!-- /.blog-card -->
+        </div>
+        <% end %>
+        <% end %>
       </div>
     </div>
 
-    <%= content_for(:after_js) do %>
-    <!-- Gmaps js: building the map -->
-    <script>
-      function initMap() {
+    <div id="map" data-markers="<%= @markers.to_json %>">
+    </div>
+  </div>
+
+  <%= content_for(:after_js) do %>
+  <!-- Gmaps js: building the map -->
+  <script>
+    function initMap() {
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 52.5206, lng: 13.4098},

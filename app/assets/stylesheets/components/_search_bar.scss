@@ -8,7 +8,17 @@
 }
 
 .search-bar {
-  padding-top: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+}
+
+.search-bar input {
+  height: 30px;
+  width: 33vw;
+  color: orange;
+  font-family: 'Droid Serif', serif;
+}
+
+
+::-webkit-input-placeholder {
+   font-style: italic;
+   font-family: 'Droid Serif', serif;
 }
