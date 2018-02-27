@@ -18,4 +18,5 @@ class Pet < ApplicationRecord
     :name => 'B',
     :description => 'C'
   }
-  end
+end
+

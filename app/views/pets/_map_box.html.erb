@@ -1,0 +1,7 @@
+<div class="map-box">
+<div id="title"><%= link_to "#{pet.name}", pet_path(pet) %></div>
+
+<div id="category"><%= pet.category %></div>
+<div id="location"><%= pet.location %></div>
+<div id="photo" style="background: url('<%= cl_image_path pet.photo, height: 50, width: 50, crop: :fill %>');">
+</div>
