@@ -1,13 +1,15 @@
-<h1>Bookings#edit</h1>
-<p>Find me in app/views/bookings/edit.html.erb</p>
+<div clas="container " >
+  <h2 style="padding-left: 15%;">Edit your booking with <%= @booking.pet.name%></h2>
 
-<%= simple_form_for([@pet, @booking]) do |f| %>
+  <%= simple_form_for([@pet, @booking]) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :start_date, required: true %>
     <%= f.input :end_date, required: true %>
+    <div class="form-actions">
+    <%= f.button :submit, "Update", class: 'btn show-btn'%>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
   </div>
-<% end %>
+
+  <% end %>
+</div>

@@ -18,11 +18,19 @@
               <div class="blog-card booking-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
                 <div class="title-content">
                   <h3><%= Pet.find(booking.pet_id).name %></h3>
-                  <div class="intro"><%= booking.status %></div>
+                  <br>
+                  <div class="intro">
+                    <p><%= booking.start_date.to_formatted_s(:short) %><p>
+                    <%= booking.status %>
+                  </div>
                 </div><!-- /.title-content -->
                 <div class="card-info">
-                  <%= booking.start_date.to_formatted_s(:short) %>
+
+                  <%= link_to 'Edit', edit_pet_booking_path(booking), class: "btn show-btn" %>
+
+
                 </div><!-- /.card-info -->
+
                 <!-- overlays -->
                 <div class="gradient-overlay"></div>
                 <div class="color-overlay"></div>
@@ -44,10 +52,16 @@
               <div class="blog-card booking-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
                 <div class="title-content">
                   <h3><%= Pet.find(booking.pet_id).name %></h3>
-                  <div class="intro"><%= booking.status %></div>
+                  <br>
+                  <div class="intro">
+                    <p><%= booking.start_date.to_formatted_s(:short)  %></p>
+                    <p><%= booking.status %></p>
+
+                    </div>
                 </div><!-- /.title-content -->
                 <div class="card-info">
-                  <%= booking.start_date.to_formatted_s(:short) %>
+
+                  <%= link_to 'Add Review', new_booking_review_path(booking), class: "btn show-btn" %>
                 </div><!-- /.card-info -->
                 <!-- overlays -->
                 <div class="gradient-overlay"></div>
@@ -61,30 +75,36 @@
     <% end %>
 
     <!-- /.pet-booking-->
-    <div class="pets-booking">
+    <div class=" row pets-booking">
       <h2>Your Pets bookings</h2>
       <% @mypets.each do |pet|%>
       <% pet.bookings.each do |booking|  %>
       <%= link_to pet_path(booking.pet) do %>
-        <div class="blog-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
-          <div class="title-content">
-            <h3><%= Pet.find(booking.pet_id).name %></h3>
-            <% if booking.status != "approved" %>
-              <%= link_to 'Approve Booking', approved_booking_path(booking), class: "btn", method: :patch %>
-              <% end %>
-            <div class="intro">
-              <%= booking.status %>
-            </div>
-          </div><!-- /.title-content -->
-          <div class="card-info">
-            <%= booking.start_date.to_formatted_s(:short)   %>
-          </div><!-- /.card-info -->
-          <!-- overlays -->
-          <div class="gradient-overlay"></div>
-          <div class="color-overlay"></div>
-          <% end %>
-           <% end %>
-        </div><!-- /.blog-card -->
+        <div class="col-xs-12 col-sm-6 col-md-4 ">
+          <div class="blog-card" style="background: url('<%= cl_image_path booking.pet.photo, height: 300, width: 400, crop: :fill %>');">
+            <div class="title-content">
+              <h3><%= Pet.find(booking.pet_id).name %></h3>
+              <br>
+              <% if booking.status != "approved" %>
+                <%= link_to 'Approve Booking', approved_booking_path(booking), class: "btn", method: :patch %>
+                <% end %>
+              <div class="intro">
+
+                <p><%= booking.start_date.to_formatted_s(:short)  %></p>
+                <p><%= booking.status %></p>
+
+              </div>
+            </div><!-- /.title-content -->
+            <div class="card-info">
+
+            </div><!-- /.card-info -->
+            <!-- overlays -->
+            <div class="gradient-overlay"></div>
+            <div class="color-overlay"></div>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
       <% end %>
     </div>
 
@@ -103,7 +123,7 @@
             </div>
           </div><!-- /.title-content -->
           <div class="card-info">
-           <%= link_to 'Edit', pet_path(pet), class: "btn" %>
+           <%= link_to 'Edit', pet_path(pet), class: "btn show-btn" %>
           </div><!-- /.card-info -->
           <!-- overlays -->
           <div class="gradient-overlay"></div>

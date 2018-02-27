@@ -4,8 +4,12 @@
   <div class="form-inputs">
     <%= f.input :content %>
     <%= f.input :rating %>
+    <%= f.button :submit,  'Add review', class: 'btn show-btn'%>
+     <br>
+     <br>
+    <%= link_to 'Back', pets_path, class: "btn show-btn" %>
   </div>
 
-  <%= f.button :submit,  'Add review', class: 'btn btn-treehouse'%>
-  </div>
+
+
 <% end %>
