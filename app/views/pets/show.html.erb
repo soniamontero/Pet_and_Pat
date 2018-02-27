@@ -5,47 +5,53 @@
   </div>
 </div>
 
-<div class="container">
+<div class="content-pet">
   <div class="row col-md-offset-1">
 
     <div class="col-xs-12 col-md-5 ">
       <div class="pet-info">
-        <h2> <%= @pet.name %></h2>
-        <p>Description: <%= @pet.description %></p>
-        <p>Category: <%= @pet.category %></p>
-        <p>Location: <%=  @pet.location %></p>
-        <%= link_to 'Destroy', pet_path(@pet), class: 'btn', method: :delete, data: { confirm: 'Are you sure?'} %></p>
-        <%= link_to 'Book this pet', new_pet_booking_path(@pet), class: 'btn' %>
+        <h2> I'm <%= @pet.name %></h2>
+        <br>
+        <p>a <%= @pet.category %> living in <%=  @pet.location %></p>
+        <br>
+        <p><%= @pet.description %> </p>
+
         <div class="reviews">
           <h2>Reviews</h2>
           <% @pet.bookings.each do |booking| %>
           <% booking.reviews.each do |review| %>
-            <p>Description: <%= review.content %></p>
-            <p>Rating: <%= review.rating %></p>
+          <div class="review">
+            <p><%= review.content %></p>
+            <%review.rating.to_i.times do %>
+            <i class="fas fa-star"></i>
+            <% end %>
+          </div>
            <% end %>
           <% end %>
-          <%= link_to 'Back', root_path, class: 'btn' %>
         </div>
       </div>
     </div>
 
 
-      <div class="col-xs-12 col-md-5 ">
-        <div class="pet-info">
+      <div class="col-xs-12 col-md-6 ">
+
+        <div class="pet-booking">
+          <%= link_to 'Back to pets', root_path, class: " btn show-btn" %>
           <h2> Make a booking</H2>
+
+
           <%= simple_form_for([@pet, @booking]) do |f| %>
           <%= f.error_notification %>
-            <div class="form-inputs">
+            <div class="form-inputs" id="pet-book">
               <%= f.input :start_date, required: true %>
               <%= f.input :end_date, required: true %>
             </div>
             <div class="form-actions">
-              <%= f.button :submit, "Book" %>
+              <%= f.button :submit, "Book", class: " btn show-btn" %>
             </div>
           <% end %>
         </div>
       </div>
-
   </div>
 </div>
 
