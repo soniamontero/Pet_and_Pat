@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @review.content = params[:review][:content]
     @review.rating = params[:review][:rating]
     if @review.save
-      redirect_to root_path
+      redirect_to dashboard_path(current_user)
     else
       render :new
     end
