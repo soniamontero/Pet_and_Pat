@@ -2,17 +2,20 @@
   <div class="flexbox">
 
     <div class="container">
-    <div class="banner" style="background-color:white;">
-      <div class="search-bar">
-        <%= form_tag pets_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-          placeholder: "Find a pet by catagory"
-          %>
+      <div class="banner" style="background-color:white;">
+        <div class="search-bar">
+          <%= form_tag pets_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+            placeholder: "Find a pet by catagory"
+            %>
+            <% end %>
+          </div>
+          <% if params[:query].present? %>
+          <%= link_to 'reset search', root_path %>
           <% end %>
         </div>
-      </div>
 
       <!-- the list / map of pets -->
       <div class="row">
