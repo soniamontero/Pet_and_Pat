@@ -4,11 +4,12 @@
 // variables
 
 $card-width: 220px;
-$card-height: 200px;
+$card-height: 280px;
 $yellow:      #D0BB57;
 
 .container {
   margin: 0px;
+  background-color: white;
 }
 
 .blog-card{
@@ -16,8 +17,8 @@ $yellow:      #D0BB57;
   height: $card-height;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
+  border-radius: 6px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, .2);
   text-align: center;
   margin: 13px;
 
