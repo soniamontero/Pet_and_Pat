@@ -3,7 +3,7 @@
   color: white;
   text-align: center;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  height: 350px;
+  height: 400px;
   background-size: cover !important;
   display: flex;
   align-items: center;
@@ -12,6 +12,15 @@
   top: 0px;
   padding-top: 70px;
 }
+
+
+.showpage {
+  background-size: cover !important;
+  align-item: center;
+  justify-content: center;
+  background-position: center;
+}
+
 .banner h1 {
   font-size: 50px;
   font-family: 'Quattrocento', serif;
